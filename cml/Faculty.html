@@ -1,0 +1,477 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="flip-card.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="shuffle.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500&family=Katibeh&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:wght@400;700&family=Roboto+Slab:wght@100..900&family=Roboto:wght@100&family=Sometype+Mono:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500&family=Katibeh&family=Poppins:wght@400;700&family=Roboto+Slab:wght@100..900&family=Roboto:wght@100&family=Sometype+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+   .member {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 62px;
+    margin: auto;
+    justify-items: center;
+}
+.img-box {
+    height: 377px;
+    width: 292px;
+    background-color: #d9d9d9;
+    background-size: cover;
+    background-position: center;
+}
+.title-box {
+  position: relative;
+  display: flex;
+  width: 290px;
+  height: 117.96px; 
+  flex-grow: 0;
+  border: solid 1px #000;
+  background-color: #fff;
+}
+.title-box a {
+  margin: auto;
+  text-decoration: none;
+}
+
+.cb-btn_nav {
+  position: relative;
+  display: inline-block;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.cb-btn_nav:focus,
+.cb-btn_nav:hover {
+  text-decoration: none;
+}
+
+.cb-btn_nav:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.cb-btn_nav:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 0.5rem;
+  transform: scaleX(0);
+  border-bottom: 1px solid;
+  transition: transform 0.5s cubic-bezier(0.35, 0, 0, 1);
+}
+
+.cb-btn_nav.-underline:after {
+  transform: scaleX(1);
+}
+
+.cb-btn_nav-title {
+  position: relative;
+  display: block;
+  padding: 0.1em;
+  margin: -0.1em;
+  overflow: hidden;
+  font-family: oddlini;
+  font-size: 20px; 
+}
+
+.cb-btn_nav-title span {
+  display: flex;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transform-origin: left center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cb-btn_nav-title span:after {
+  content: "Mail";
+  display: flex;
+  position: absolute;
+  top: 150%;
+  margin: 5px;
+  transform: skewY(10deg);
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@media (pointer: fine) {
+  .cb-btn_nav:hover .cb-btn_nav-title span {
+    transform: translateY(-170%) skewY(5deg);  
+  }
+
+  .cb-btn_nav:hover .cb-btn_nav-title span:after {
+    transform: skewY(-5deg);
+  }
+}
+
+.contain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 86px;
+    padding: 110px;
+}
+.container{
+    justify-content: center;
+}
+.member_tile .img-box:hover ~  .social {
+    transform: translateY(-74px) ;
+}
+.social:hover{
+    transform: translateY(-74px) ;
+}
+.social {
+  padding:5px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    position: absolute;
+    border: solid 1px #000;
+    width: 186px;
+    height: 50.1px;
+    flex-grow: 0;
+    margin: 0 52px;
+    border-radius: 14px;
+    background-color: #fff;
+}
+.social img {
+    aspect-ratio: 1 / 1;
+    height: 40px;
+    border-radius: 2px;
+}
+
+</style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+              <a class="logo" href="#"><img class="logo" src="https://cml.gndec.ac.in/assets/images/cml_logo.png" alt="CML"></a>
+            </div>
+            <div class="links">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">About</a></li>
+                
+              </ul>
+            </div>
+            <div class="demo">
+              <a href="#" class="button">Contact Us</a>
+            </div>
+          </nav>
+        </header>
+        <div class="svg">
+          <a href=""><img class="sun" src="sun.png" alt="">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><g fill="#aaa"><path d="M66.5 140.5a3.23 3.23 0 0 1 2.9 3.69 3.23 3.23 0 0 1-3.73 2.84 3.18 3.18 0 0 1-2.55-1.9l.6-.25c.16.4.41.75.77 1.03.36.28.78.45 1.25.5a2.6 2.6 0 0 0 3.02-2.3 2.62 2.62 0 0 0-2.34-3c-.47-.06-.92 0-1.34.18-.42.18-.75.44-1 .8l-.52-.38a3.16 3.16 0 0 1 2.93-1.21ZM54.05 138.66c.79-.43 1.63-.51 2.51-.25.89.27 1.54.8 1.97 1.59.43.8.5 1.63.25 2.51a3.17 3.17 0 0 1-1.58 1.96c-.8.44-1.64.52-2.52.26a3.17 3.17 0 0 1-1.97-1.6 3.17 3.17 0 0 1-.25-2.5 3.2 3.2 0 0 1 1.59-1.97Zm3.93 1.63a2.56 2.56 0 0 0-1.6-1.29 2.62 2.62 0 0 0-3.31 1.8 2.6 2.6 0 0 0 .2 2.04c.33.65.86 1.08 1.59 1.3.72.2 1.4.14 2.03-.21a2.59 2.59 0 0 0 1.28-1.6c.21-.72.15-1.4-.2-2.04ZM42.13 139.63l-.57-.28 2.8-5.72.5.24.9 6.22 2.28-4.65.57.28-2.81 5.72-.49-.24-.9-6.23-2.28 4.66ZM32.3 133.61l.34-.5 1.62 1.1 3.25-4.76.53.36-3.26 4.77 1.62 1.1-.34.5-3.76-2.57ZM29.6 123.03l-.62 1.56 2.22 2.05 1.5-.75.49.46-6.12 3.02-.48-.45 2.52-6.34.5.45Zm1.02 3.9-1.88-1.75-1.38 3.38 3.26-1.63ZM22.96 115.51a3.23 3.23 0 0 1-.55 4.66 3.22 3.22 0 0 1-4.65-.6 3.18 3.18 0 0 1-.46-3.14l.6.24c-.17.4-.24.82-.18 1.27.07.46.24.87.53 1.25a2.6 2.6 0 0 0 3.77.48 2.62 2.62 0 0 0 .45-3.78c-.3-.37-.65-.64-1.07-.81a2.26 2.26 0 0 0-1.28-.14l-.1-.64a3.18 3.18 0 0 1 2.94 1.2ZM11.25 109.4l.52-.3.98 1.7 4.99-2.9.32.56-5 2.89.98 1.7-.51.3-2.28-3.94ZM8.17 90.27l-.57.12-.63-3.22.57-.11.63 3.21ZM9.93 64.83a3.23 3.23 0 0 1-3.76 2.8 3.23 3.23 0 0 1-2.75-3.8 3.17 3.17 0 0 1 1.97-2.5l.24.61c-.42.14-.77.38-1.06.74-.28.35-.46.76-.54 1.23A2.6 2.6 0 0 0 6.26 67a2.62 2.62 0 0 0 3.06-2.26c.07-.47.03-.91-.14-1.34a2.26 2.26 0 0 0-.78-1.02l.4-.5a3.17 3.17 0 0 1 1.13 2.97ZM12.1 52.42c.4.8.46 1.64.18 2.52a3.18 3.18 0 0 1-1.64 1.92c-.8.41-1.65.47-2.52.18a3.17 3.17 0 0 1-1.91-1.63 3.17 3.17 0 0 1-.2-2.53c.3-.87.84-1.51 1.65-1.92.8-.4 1.64-.47 2.51-.18a3.2 3.2 0 0 1 1.93 1.64Zm-1.73 3.88a2.55 2.55 0 0 0 1.32-1.55 2.62 2.62 0 0 0-1.72-3.36 2.59 2.59 0 0 0-2.03.13c-.66.32-1.1.84-1.34 1.56-.23.71-.18 1.4.16 2.04a2.6 2.6 0 0 0 1.56 1.32c.7.23 1.4.19 2.05-.14ZM11.44 40.46l.3-.57 5.63 2.97-.25.49-6.25.72 4.6 2.42-.3.56-5.64-2.97.26-.48 6.24-.72-4.6-2.42ZM17.7 30.78l.49.36-1.15 1.58 4.68 3.39-.38.51-4.67-3.38-1.15 1.58-.48-.35 2.66-3.69ZM28.34 28.36l-1.54-.67-2.1 2.17.7 1.51-.46.49-2.86-6.2.46-.48 6.27 2.7-.47.48Zm-3.91.91 1.79-1.84-3.34-1.46 1.55 3.3ZM36.02 21.9a3.22 3.22 0 0 1-4.64-.67 3.23 3.23 0 0 1 .73-4.64 3.17 3.17 0 0 1 3.15-.37l-.26.6c-.39-.2-.81-.27-1.27-.22-.45.05-.87.21-1.25.5a2.6 2.6 0 0 0-.59 3.75 2.61 2.61 0 0 0 3.77.55c.38-.28.66-.63.84-1.05.18-.42.23-.85.16-1.28l.65-.08a3.17 3.17 0 0 1-1.28 2.9ZM42.43 10.34l.29.53-1.72.94 2.75 5.07-.56.3-2.75-5.07-1.72.94-.29-.53 4-2.18ZM61.61 7.77l-.1-.57 3.23-.55.1.57-3.23.55ZM86.98 10.2a3.23 3.23 0 0 1-2.7-3.84 3.23 3.23 0 0 1 3.88-2.64 3.17 3.17 0 0 1 2.43 2.04l-.62.22a2.26 2.26 0 0 0-.7-1.07c-.35-.3-.76-.5-1.22-.58a2.6 2.6 0 0 0-3.14 2.15 2.62 2.62 0 0 0 2.18 3.12c.46.08.91.05 1.34-.1.43-.17.78-.42 1.04-.76l.5.41a3.17 3.17 0 0 1-3 1.05ZM99.3 12.7c-.8.4-1.65.43-2.52.12a3.18 3.18 0 0 1-1.88-1.7 3.2 3.2 0 0 1-.1-2.52c.3-.86.86-1.48 1.67-1.87.82-.39 1.66-.43 2.53-.12.87.31 1.5.88 1.88 1.7.38.81.42 1.65.12 2.52a3.2 3.2 0 0 1-1.7 1.88Zm-3.83-1.83c.3.65.81 1.11 1.52 1.36a2.62 2.62 0 0 0 3.4-1.62 2.6 2.6 0 0 0-.08-2.04 2.54 2.54 0 0 0-1.52-1.38 2.54 2.54 0 0 0-2.04.1c-.66.32-1.1.83-1.36 1.53-.25.7-.22 1.38.08 2.05ZM111.25 12.38l.56.3-3.11 5.57-.48-.27-.56-6.27-2.53 4.53-.56-.31 3.11-5.56.48.27.56 6.26 2.53-4.52ZM120.75 18.9l-.37.48-1.55-1.19-3.5 4.59-.5-.39 3.5-4.58-1.56-1.2.36-.47 3.62 2.76ZM122.88 29.61l.71-1.52-2.1-2.16-1.54.67-.47-.49 6.27-2.69.46.47-2.86 6.2-.47-.48Zm-.8-3.94 1.78 1.84 1.55-3.3-3.34 1.46ZM129.12 37.48a3.23 3.23 0 0 1 .8-4.63 3.23 3.23 0 0 1 4.61.86 3.18 3.18 0 0 1 .28 3.15l-.59-.27c.2-.39.3-.81.25-1.27a2.53 2.53 0 0 0-.46-1.26 2.6 2.6 0 0 0-3.73-.69 2.63 2.63 0 0 0-.65 3.75c.27.4.61.68 1.02.87.42.2.84.26 1.28.2l.06.65a3.17 3.17 0 0 1-2.87-1.36ZM140.49 44.2l-.53.27-.9-1.74-5.13 2.62-.3-.56 5.15-2.63-.89-1.74.54-.28 2.06 4.06ZM142.54 63.47l.58-.08.45 3.24-.57.08-.46-3.24ZM139.43 88.78a3.23 3.23 0 0 1 3.91-2.59c.9.2 1.6.66 2.1 1.41.49.75.64 1.6.44 2.54a3.16 3.16 0 0 1-2.1 2.38l-.2-.62c.42-.12.78-.34 1.09-.68.3-.34.5-.74.6-1.2a2.6 2.6 0 0 0-2.06-3.2 2.62 2.62 0 0 0-3.17 2.1c-.1.46-.08.9.07 1.34.14.43.38.79.72 1.06l-.42.49c-.42-.36-.72-.8-.9-1.35-.17-.54-.2-1.1-.08-1.68ZM136.6 101.06a3.19 3.19 0 0 1-.04-2.53c.33-.86.91-1.47 1.74-1.83a3.2 3.2 0 0 1 2.52-.05c.86.34 1.47.91 1.83 1.74.37.83.38 1.67.05 2.53a3.17 3.17 0 0 1-1.74 1.83c-.83.36-1.67.38-2.52.05a3.2 3.2 0 0 1-1.84-1.74Zm1.94-3.79c-.66.3-1.13.79-1.4 1.49s-.26 1.38.03 2.04c.3.67.8 1.13 1.5 1.4s1.38.27 2.04-.02a2.54 2.54 0 0 0 1.41-1.48c.28-.7.26-1.39-.04-2.05a2.6 2.6 0 0 0-1.49-1.4 2.62 2.62 0 0 0-2.05.02ZM136.63 113.04l-.32.55-5.48-3.27.28-.47 6.27-.39-4.45-2.66.33-.54 5.47 3.26-.28.47-6.27.4 4.45 2.65ZM129.85 122.37l-.47-.38 1.23-1.52-4.48-3.63.4-.5 4.48 3.63 1.23-1.52.47.38-2.86 3.54ZM119.11 124.22l1.5.75 2.22-2.05-.63-1.55.5-.46 2.51 6.35-.48.44-6.11-3.02.5-.46Zm3.96-.7-1.89 1.74 3.26 1.64-1.37-3.38ZM111.1 130.26a3.22 3.22 0 0 1 4.6.91c.5.78.66 1.6.49 2.48a3.23 3.23 0 0 1-1.47 2.12 3.17 3.17 0 0 1-3.17.2l.3-.58c.37.22.8.31 1.25.29.45-.03.88-.17 1.28-.43a2.61 2.61 0 0 0 .78-3.72 2.62 2.62 0 0 0-3.72-.75c-.4.26-.7.6-.9 1-.2.41-.28.83-.24 1.27l-.64.04a3.17 3.17 0 0 1 1.44-2.83ZM104.08 141.46l-.26-.55 1.76-.84-2.48-5.2.58-.28 2.48 5.2 1.76-.84.26.55-4.1 1.96ZM84.8 143l.06.58-3.26.37-.06-.57 3.25-.38Z"/></g></svg>
+        </a></div>
+
+        <section class="title">
+        <div class="head"style="background: none;"> 
+        <h2>A dedicated faculty <br><span style="color:black;">empowering all learners</span></h2> 
+        </div>
+        </section>
+
+        <section class="Faculty">
+           <div class="container sec" style="background: #1d2026">
+            <div class="contain">
+                <h2 style="color:#DDDDDD">Faculty</h2>
+                <div class="member"></div>
+            </div>
+            
+           </div>
+        </section>
+          <footer>
+            <div class="container sec" style="flex-direction: column;margin: 47px auto;margin-bottom: 0;">
+              
+              <div class="box">
+              <div class="logoico">
+                <img src="https://cml.gndec.ac.in/assets/images/logogne.png" alt="" height="140">
+                <img src="https://cml.gndec.ac.in/assets/images/cml_logo.png" alt=""  height="140">
+              </div>
+              <div class="email">
+                <input type="email" name="" class="inp" placeholder="Email Address"> <input type="button" value="Subscribe"class="btn">
+              </div>
+            </div>
+              <hr>
+              <div class="pglinks">
+                <div class="t">
+                  <h4>CML</h4>
+                  <h5>Center For Multi-Faceted Learning,<br> Guru Nanak Dev Engineering College, Ludhiana</h5>
+                </div>
+                <div class="l">
+                  
+                    <div class="navl">
+                      <h3>Navigation</h3>
+                      <ol>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Events</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                      </ol>
+                    </div>
+                  
+                    <div class="navl">
+                      <h3>Social</h3>
+                      <ol>
+                        <li><a href="">Youtube</a></li>
+                        <li><a href="">Facebook</a></li>
+                        <li><a href="">LinkedIn</a></li>
+                        <li><a href="">Instagram</a></li>
+                      </ol>
+                    </div>
+                  
+                    <div class="navl">
+                      <h3>More..</h3>
+                      <ol>
+                        <li><a href="">Faculty</a></li>
+                        <li><a href="">Members</a></li>
+                        <li><a href="">Web Developers</a></li>
+                        
+                      </ol>
+                    </div>
+                  
+                </div>
+              </div>
+              <hr>
+              <div class="cc">
+                <div style="flex:1.7">
+                <h6>Copyright <span id="date" style="display: contents;">2024</span> © CML GNDEC</h6></div>
+                <div class="pglinks" style="flex: 1;justify-content: space-between;align-self: end;padding: 37 0;">
+                  <h6><a href="">CML, GNDEC</a></h6>
+                  <h6><a href="">0161-5064813</a></h6>
+                  <h6><a href="">cml.gndec@gmail.com</a></h6>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+
+
+
+          <script>
+            console.clear();
+      
+      gsap.registerPlugin(ScrollTrigger);
+
+
+
+
+
+      
+      
+      let e = document.querySelector(".a"); 
+      let t = document.querySelector(".event"); 
+      animate(e);
+      function animate (section) {
+        var color = section.getAttribute("data-color");
+        
+        gsap.to(document.body, {
+          backgroundColor: color,
+          ease: "power1.inOut",
+          onStart: text_shuffle_effect,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 40%", 
+            end: "top 40%",
+            markers: false,
+            toggleActions: "play  reverse"
+          }
+        });
+        let tr = document.querySelector(".cml-team"); 
+        gsap.to(tr, {
+            opacity:100+"%",
+            ease: "power1.inOut",
+            Duration:10,
+          onStart: text_shuffle_effect_1,
+          scrollTrigger: {
+            trigger: tr,
+            start: "top 40%", 
+            end: "top 40%",
+            markers: false,
+            toggleActions: "play  reverse"
+          }
+        });
+        
+      };
+
+
+function text_shuffle_effect(){
+            const typeShuffle = new TypeShuffle(t);
+            typeShuffle.trigger('fx6');
+};
+
+function text_shuffle_effect_1(){
+    let t = document.querySelectorAll(".data-tile>h1");
+    t.forEach(t=>{const typeShuffle = new TypeShuffle(t);
+    typeShuffle.trigger('fx6');})   
+     // Trigger effect fx1
+};
+
+
+
+
+
+
+
+
+
+
+
+          </script>
+          <script>
+            let elem = document.querySelector(".member");
+const faculty = [
+    [
+        "Dr. Narwant Singh Grewal",
+        "narwant@gndec.ac.in",
+        "Officer Incharge",
+        "https://cml.gndec.ac.in/assets/images/faculty/Narwant.jpg",
+    ],
+    [
+        "Prof. Lakhveer Singh",
+        "lakhveersingh@gndec.ac.in",
+        "Officer Incharge",
+        "https://cml.gndec.ac.in/assets/images/faculty/Lakhveer.jpg",
+        "https://instagram.com/lakhveerkhana"
+         
+    ],
+    [
+        "Er. Manpreet Singh Sidhu",
+        "767.manpreet@gmail.com",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Manpreet.jpg"
+    ],
+    [
+        "Er. Charnjeet Singh",
+        "charnjeetsingh@gndec.ac.in",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Charanjeet.jpeg"
+    ],
+    [
+        "Er. Shailja",
+        "shailjasharma15@gmail.com",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Shailja.jpg"
+    ],
+    [
+        "Er. Arshpreet Kaur",
+        "arrshpandher89@gmail.com",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Arshpreet.jpg"
+    ],
+    [
+        "Er. Samreet Kaur",
+        null,
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Samreet.jpg"
+    ],
+    [
+        "Dr. Rajvir Kaur",
+        "srawrajvir021@gmail.com",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Rajvir.jpg"
+    ],
+    [
+        "Dr. Navneet Kaur",
+        "navneetkaur@gndec.ac.in",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Navneet.jpg"
+    ],
+    [
+        "Dr. Amit Kamra",
+        "amit_kamra@gndec.ac.in",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Amit.jpg"
+    ],
+    [
+        "Ms. Mandeep Kaur Khosa",
+        "mba_mandeep@gndec.ac.in",
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Mandeep.jpg"
+    ],
+    [
+        "Ar. Navjot Kaur",
+        null,
+        "Executive Committee",
+        "https://cml.gndec.ac.in/assets/images/faculty/Navjot.jpg"
+    ],
+    [
+        "Prof. Shivmanmeet Singh",
+        "shivmanmeet@gmail.com",
+        "Coordinator Student Club",
+        "https://cml.gndec.ac.in/assets/images/faculty/Shivmanmeet.jpg",
+        "https://instagram.com/prof.shivmanmeet_singh",
+        "https://www.facebook.com/Er.ShivmanmeetSingh",
+        "https://www.linkedin.com/in/prof-shivmanmeet-singh-420701217/"
+    ],
+    [
+        "Mrs. Satwinder Kaur",
+        "satwinderkaur@gndec.ac.in",
+        "Ministerial Staff",
+        "https://cml.gndec.ac.in/assets/images/faculty/Satwinder.jpg"
+    ],
+    [
+        "Mr. Varinderjit Singh",
+        "varinderjit@gndec.ac.in",
+        "Supporting Staff",
+        "https://cml.gndec.ac.in/assets/images/faculty/Varinderjit.jpg"
+    ],
+    [
+        "Mr. Sukhwinder Singh",
+        "Sukhwinder@gndec.ac.in",
+        "Supporting Staff",
+        "https://cml.gndec.ac.in/assets/images/faculty/Sukhwinder.jpg"
+    ]
+]
+
+faculty.forEach((el) => {
+  let t = `<div class="member_tile">
+  <div class="img-box" style="background-image:url(${el[3]})"></div> 
+  <div class="social" style=${(el[4]==null&el[5]==null&el[6]==null)?"display:none":"display:flex"}> 
+  <a target="_blank" href="${el[4]}" style=${el[4]==null?"display:none":"display:block"}><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20102%20102%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22a%22%20cx%3D%226.601%22%20cy%3D%2299.766%22%20r%3D%22129.502%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%22.09%22%20stop-color%3D%22%23fa8f21%22%2F%3E%3Cstop%20offset%3D%22.78%22%20stop-color%3D%22%23d82d7e%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%2270.652%22%20cy%3D%2296.49%22%20r%3D%22113.963%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%22.64%22%20stop-color%3D%22%238c3aaa%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238c3aaa%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url(%23a)%22%20d%3D%22M25.865%2C101.639A34.341%2C34.341%2C0%2C0%2C1%2C14.312%2C99.5a19.329%2C19.329%2C0%2C0%2C1-7.154-4.653A19.181%2C19.181%2C0%2C0%2C1%2C2.5%2C87.694%2C34.341%2C34.341%2C0%2C0%2C1%2C.364%2C76.142C.061%2C69.584%2C0%2C67.617%2C0%2C51s.067-18.577.361-25.14A34.534%2C34.534%2C0%2C0%2C1%2C2.5%2C14.312%2C19.4%2C19.4%2C0%2C0%2C1%2C7.154%2C7.154%2C19.206%2C19.206%2C0%2C0%2C1%2C14.309%2C2.5%2C34.341%2C34.341%2C0%2C0%2C1%2C25.862.361C32.422.061%2C34.392%2C0%2C51%2C0s18.577.067%2C25.14.361A34.534%2C34.534%2C0%2C0%2C1%2C87.691%2C2.5a19.254%2C19.254%2C0%2C0%2C1%2C7.154%2C4.653A19.267%2C19.267%2C0%2C0%2C1%2C99.5%2C14.309a34.341%2C34.341%2C0%2C0%2C1%2C2.14%2C11.553c.3%2C6.563.361%2C8.528.361%2C25.14s-.061%2C18.577-.361%2C25.14A34.5%2C34.5%2C0%2C0%2C1%2C99.5%2C87.694%2C20.6%2C20.6%2C0%2C0%2C1%2C87.691%2C99.5a34.342%2C34.342%2C0%2C0%2C1-11.553%2C2.14c-6.557.3-8.528.361-25.14.361s-18.577-.058-25.134-.361%22%20data-name%3D%22Path%2016%22%2F%3E%3Cpath%20fill%3D%22url(%23b)%22%20d%3D%22M25.865%2C101.639A34.341%2C34.341%2C0%2C0%2C1%2C14.312%2C99.5a19.329%2C19.329%2C0%2C0%2C1-7.154-4.653A19.181%2C19.181%2C0%2C0%2C1%2C2.5%2C87.694%2C34.341%2C34.341%2C0%2C0%2C1%2C.364%2C76.142C.061%2C69.584%2C0%2C67.617%2C0%2C51s.067-18.577.361-25.14A34.534%2C34.534%2C0%2C0%2C1%2C2.5%2C14.312%2C19.4%2C19.4%2C0%2C0%2C1%2C7.154%2C7.154%2C19.206%2C19.206%2C0%2C0%2C1%2C14.309%2C2.5%2C34.341%2C34.341%2C0%2C0%2C1%2C25.862.361C32.422.061%2C34.392%2C0%2C51%2C0s18.577.067%2C25.14.361A34.534%2C34.534%2C0%2C0%2C1%2C87.691%2C2.5a19.254%2C19.254%2C0%2C0%2C1%2C7.154%2C4.653A19.267%2C19.267%2C0%2C0%2C1%2C99.5%2C14.309a34.341%2C34.341%2C0%2C0%2C1%2C2.14%2C11.553c.3%2C6.563.361%2C8.528.361%2C25.14s-.061%2C18.577-.361%2C25.14A34.5%2C34.5%2C0%2C0%2C1%2C99.5%2C87.694%2C20.6%2C20.6%2C0%2C0%2C1%2C87.691%2C99.5a34.342%2C34.342%2C0%2C0%2C1-11.553%2C2.14c-6.557.3-8.528.361-25.14.361s-18.577-.058-25.134-.361%22%20data-name%3D%22Path%2017%22%2F%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M461.114%2C477.413a12.631%2C12.631%2C0%2C1%2C1%2C12.629%2C12.632%2C12.631%2C12.631%2C0%2C0%2C1-12.629-12.632m-6.829%2C0a19.458%2C19.458%2C0%2C1%2C0%2C19.458-19.458%2C19.457%2C19.457%2C0%2C0%2C0-19.458%2C19.458m35.139-20.229a4.547%2C4.547%2C0%2C1%2C0%2C4.549-4.545h0a4.549%2C4.549%2C0%2C0%2C0-4.547%2C4.545m-30.99%2C51.074a20.943%2C20.943%2C0%2C0%2C1-7.037-1.3%2C12.547%2C12.547%2C0%2C0%2C1-7.193-7.19%2C20.923%2C20.923%2C0%2C0%2C1-1.3-7.037c-.184-3.994-.22-5.194-.22-15.313s.04-11.316.22-15.314a21.082%2C21.082%2C0%2C0%2C1%2C1.3-7.037%2C12.54%2C12.54%2C0%2C0%2C1%2C7.193-7.193%2C20.924%2C20.924%2C0%2C0%2C1%2C7.037-1.3c3.994-.184%2C5.194-.22%2C15.309-.22s11.316.039%2C15.314.221a21.082%2C21.082%2C0%2C0%2C1%2C7.037%2C1.3%2C12.541%2C12.541%2C0%2C0%2C1%2C7.193%2C7.193%2C20.926%2C20.926%2C0%2C0%2C1%2C1.3%2C7.037c.184%2C4%2C.22%2C5.194.22%2C15.314s-.037%2C11.316-.22%2C15.314a21.023%2C21.023%2C0%2C0%2C1-1.3%2C7.037%2C12.547%2C12.547%2C0%2C0%2C1-7.193%2C7.19%2C20.925%2C20.925%2C0%2C0%2C1-7.037%2C1.3c-3.994.184-5.194.22-15.314.22s-11.316-.037-15.309-.22m-.314-68.509a27.786%2C27.786%2C0%2C0%2C0-9.2%2C1.76%2C19.373%2C19.373%2C0%2C0%2C0-11.083%2C11.083%2C27.794%2C27.794%2C0%2C0%2C0-1.76%2C9.2c-.187%2C4.04-.229%2C5.332-.229%2C15.623s.043%2C11.582.229%2C15.623a27.793%2C27.793%2C0%2C0%2C0%2C1.76%2C9.2%2C19.374%2C19.374%2C0%2C0%2C0%2C11.083%2C11.083%2C27.813%2C27.813%2C0%2C0%2C0%2C9.2%2C1.76c4.042.184%2C5.332.229%2C15.623.229s11.582-.043%2C15.623-.229a27.8%2C27.8%2C0%2C0%2C0%2C9.2-1.76%2C19.374%2C19.374%2C0%2C0%2C0%2C11.083-11.083%2C27.716%2C27.716%2C0%2C0%2C0%2C1.76-9.2c.184-4.043.226-5.332.226-15.623s-.043-11.582-.226-15.623a27.786%2C27.786%2C0%2C0%2C0-1.76-9.2%2C19.379%2C19.379%2C0%2C0%2C0-11.08-11.083%2C27.748%2C27.748%2C0%2C0%2C0-9.2-1.76c-4.041-.185-5.332-.229-15.621-.229s-11.583.043-15.626.229%22%20data-name%3D%22Path%2018%22%20transform%3D%22translate(-422.637%20-426.196)%22%2F%3E%3C%2Fsvg%3E"></a>
+  <a target="_blank" href="${el[5]}" style=${el[5]==null?"display:none":"display:block"} ><img src="https://cdn-icons-png.flaticon.com/128/733/733547.png">
+  </a><a target="_blank" href="${el[6]}" style=${el[6]==null?"display:none":"display:block"} ><img src="data:image/png;base64,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"></div>
+  </a><div class="title-box">
+  
+  <a class="cb-btn cb-btn_nav" href="mailto:${el[1]}" target="_blank" rel="noopener"> 
+  <span class="cb-btn_nav-title">
+    <span data-text="LinkedIn">${el[0]}<br><span style="font-size:12px">${el[2]}</span></span>
+  </span>
+</a></div>
+</div>`;
+  elem.innerHTML += t;
+});
+
+
+          </script>
+
+    </body>
+    </html>

@@ -1,0 +1,126 @@
+/* .flip-card-container */
+
+  
+  /* .flip-card */
+  .flip-card {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: .6s .1s;
+  }
+  
+  /* hover and focus-within states */
+  .flip-card-container:hover .flip-card,
+  .flip-card-container:focus-within .flip-card {
+    transform: rotateY(180deg);
+  }
+  
+  /* .card-... */
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    background: aliceblue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  
+    backface-visibility: hidden;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* .card-front */
+  .card-front {
+    transform: rotateY(0deg);
+    z-index: 2;
+  }
+  
+  /* .card-back */
+  .card-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  
+  /* figure */
+  figure {
+    z-index: -1;
+  }
+  
+  /* figure, .img-bg */
+  figure,
+  .img-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card-front .img-bg {
+      background-image:url(https://cml.gndec.ac.in/assets/images/events/Time%20Management.png);
+      background-size: contain;
+  
+  }
+  .items {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      padding: 30px;
+  }
+  #date{
+    display:flex;
+    flex-direction:row;
+  }
+  
+  #date h2{
+   font-size:64px;
+  }
+  .line{
+        height: 131px;
+    width:0
+  }
+  
+  .card-front .img-bg::before {
+    content: "";
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(18deg);
+    width: 100%;
+    height: 6px;
+    border: 1px solid var(--primary);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    transition: .1s;
+  }
+  .items h6 {
+      color: black;
+  }
+  #desc h6 {
+      padding: 70px 8px 70px;
+      text-align: left;
+  }
+  #date h6 {
+    text-align: left;
+    word-wrap: break-word;
+    width: 34px;
+    padding: 11px 5px;
+}
+.flip_card {
+  display: flex;
+  margin: 27px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+  border: solid 1px white;
+}
